@@ -1,0 +1,41 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+<body>
+
+    <section>
+        <div id="Hero" style="background-color:#E32227">
+            <h1 id="site-title">Url Shortener</h1>
+            <div class="box">
+                
+                <form method="POST" action=''>
+                    {% csrf_token %}
+                    <label style="color: white; font-size: 2.5rem;"> Enter your Url Here:</label><br>
+                    <input type="text" name = "link" size=50 /><br><br>
+                    <input type="submit" value="Shorten Da Url" style="height: 50px; width: 100px; background-color:floralwhite;border-radius: 8px;"/>
+                </form>
+
+                <br><br>
+                <br><br>
+                {% if not show %}
+                <h3> Waiting for you to Enter Link and Press the Button </h3>
+                {% else %}
+                <p style="color: white; font-size: 2.5rem;">Your Link is </p><br>
+                <a style="text-align: center;
+                margin : 0;
+                color: white;
+                font-family: 'Permanent Marker', cursive;
+                font-weight: 700;
+                line-height: 1.5;
+                font-size: 2.5rem;
+                letter-spacing: -0.08rem;
+                box-sizing: border-box;" target="blank">http://127.0.0.1:8000/{{link}}</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</body>
